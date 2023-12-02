@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://logowik.com/content/uploads/images/t_twitter-x5265.logowik.com.webp">
+    <title><%= post[0].username %>'s Posts</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="profile-details">  
+            <% if(post[0].profileImage.url){ %>
+                <img src="<%=post[0].profileImage.url%>" alt="" class="prof-pic">
+                <h1 style="font-size: 1rem;  display: inline-block;"><%=post[0].username%></h1>
+                <span style="opacity: 0.75; font-size: 15px; padding: 10px;">@<%=post[0].hashname%></span>
+            <% }else{ %>
+                <div style="margin-left: 20px;
+                margin-top: 2.5px; height: 50px; width: 50px; border-radius: 50%;">
+                    <img src="/profilelogo.PNG" alt="logo" class="prof-logo">
+                    <h1 style="font-size: 1rem;  display: inline-block;"><%=post[0].username%></h1>
+                    <span style="opacity: 0.75; font-size: 15px; padding: 10px;">@<%=post[0].hashname%></span>
+                </div>
+            <%}%>
+    
+    </div>
+    <hr style="margin: 0;" class="marger">
+    <div class="main">
+        <% for(det of post){ %>
+            <div class="post-header">
+                <% if(post[0].profileImage.url){ %>
+                    <img src="<%=post[0].profileImage.url%>" alt="" class="prof-pic">
+                 <% }else{ %>
+                    <div style="margin-left: 20px;
+                    margin-top: 2.5px; height: 50px; width: 50px; border-radius: 50%;">
+                        <img src="/profilelogo.PNG" alt="logo" class="prof-logo">
+                    </div>
+                <% } %>
+                <h1 style="font-size: 1rem;  display: inline-block;"><%=det.username%></h1>
+                <span style="opacity: 0.75; font-size: 15px; padding: 10px;">@<%=det.hashname%></span>
+            </div>
+            <p style="margin-top: 0;"><%= det.text %></p>
+            <% if(det.image.url){ %>
+                <img src="<%=det.image.url%>" alt="photo" class="postImg postImg-ind">
+            <% } %>
+            <div class="data">
+                <form action="/twitter/<%=det._id%>/edit?_method=PUT" method="POST">
+                    <button class="like">
+                        <i class="fa-solid fa-heart fa-xl symb1"></i>
+                        <% if(post.likes) {%>
+                        <span>Likes: <%=post.likes%></span>
+                        <% } else {%>
+                        <span>Likes: 0</span>
+                        <% } %>
+                    </button>
+                </form> 
+            </div>
+            <hr>
+            <%}%>
+    </div>
+    
+</body>
+</html>
