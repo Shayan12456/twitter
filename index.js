@@ -107,7 +107,7 @@ app.get("/twitter/search/username=", async (req, res)=>{
     }else{
         res.render("notfound.ejs");
     }
-    console.log(foundUser);
+    // console.log(foundUser);
 });
 
 app.put("/twitter/:id/edit", async (req, res)=>{
