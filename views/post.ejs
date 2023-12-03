@@ -49,10 +49,10 @@
             <% } %>
             <div class="data">
                 <form action="/twitter/<%=det._id%>/edit?_method=PUT" method="POST">
-                    <button class="like">
+                     <button class="like">
                         <i class="fa-solid fa-heart fa-xl symb1"></i>
-                        <% if(post.likes) {%>
-                        <span>Likes: <%=post.likes%></span>
+                        <% if(det.likes) {%>
+                        <span>Likes: <%=det.likes%></span>
                         <% } else {%>
                         <span>Likes: 0</span>
                         <% } %>
