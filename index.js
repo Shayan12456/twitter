@@ -61,62 +61,6 @@ const twitterSchema = Schema({
 });
 const Post = mongoose.model("Post", twitterSchema);
 
-// let posts = [{
-//     username: "Neeraj Walia",
-//     hashname: "nw",
-//     comments: 17,
-//     likes: 15,
-//     text: "DP is best",
-//     photo: "",
-//     img: "/nw.jpg"
-// },
-// {
-//     username: "Neeraj Walia",
-//     hashname: "nw",
-//     comments: 18,
-//     likes: 15,
-//     text: "DP is best",
-//     photo: "",
-//     img: "/nw.jpg"
-// },
-// {
-//     username: "Sundar Pichai",
-//     hashname: "sp",
-//     comments: 71,
-//     likes: 51,
-//     text: "A new upgrade in Bard is coming soon!",
-//     photo: "",
-//     img:  "/sp.png"
-// },
-// {
-//     username: "Shradha Khapra",
-//     hashname: "skd",
-//     comments: 7000,
-//     likes: 10000,
-//     text: "plus is the biggest launch ever from our side :)",
-//     photo: "/skpost.PNG",
-//     img: "skpic.png"
-// },
-// {
-//     username: "Aman Dhattarwal",
-//     hashname: "ad",
-//     comments: 800,
-//     likes: 900,
-//     text: "plus is the biggest launch ever from our side :)",
-//     photo: "",
-//     img: "adpic.png"
-// },
-// {
-//     username: "ElonMusk",
-//     hashname: "musk",
-//     comments: 89,
-//     likes: 199,
-//     text: "New launch is gonna be freakin'",
-//     photo: "",
-//     img: "/em.png"
-// }
-// ];
-
 app.get("/twitter", async (req, res)=>{
     const posts = await Post.find({});
     res.render("index.ejs", {posts});
@@ -157,11 +101,8 @@ app.post("/twitter", cpUpload, async (req, res)=>{
 app.get("/twitter/search/username=", async (req, res)=>{
     // console.log(req.query.username);
     const foundUser = await Post.find({username: req.query.username});
-    console.log(foundUser);
     if(foundUser.length !== 0){
         let post = foundUser;
-        // console.log(foundUser);
-        // console.log(post[0].username);
         res.render("post.ejs", {post})
     }else{
         res.render("notfound.ejs");
@@ -170,13 +111,15 @@ app.get("/twitter/search/username=", async (req, res)=>{
 });
 
 app.put("/twitter/:id/edit", async (req, res)=>{
+    const referer = req.get('Referer');
+    console.log("referer");
         const { id } = req.params;
         const post = await Post.findById(id);
     
         post.likes += 1;
         await post.save();
 
-        res.redirect("/twitter");
+        res.redirect(referer);
 });
 app.listen(port, ()=>{
     console.log("app is listening");
