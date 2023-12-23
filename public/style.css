@@ -269,15 +269,29 @@ p, .postImg{
     .postImg-ind{
         width: 370px !important;
     }
+    .postImg{
+        margin-left: 55px;
+    }
 }
 @media(max-width: 420px){
     .postImg-ind{
         width: 325px !important;
+    }
+    .postImg{
+        margin-left: 40px;
+    }
+}
+@media(max-width: 410px){
+    .postImg{
+        margin-left: 35px;
     }
 }
 @media(max-width: 400px){
     .postImg-ind{
         width: 300px !important;
         height: 250px !important;
+    }
+    .postImg{
+        margin-left: 30px;
     }
 }
