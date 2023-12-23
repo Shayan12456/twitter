@@ -112,7 +112,7 @@ app.get("/twitter/search/username=", async (req, res)=>{
 
 app.put("/twitter/:id/edit", async (req, res)=>{
     const referer = req.get('Referer');
-    console.log("referer");
+
         const { id } = req.params;
         const post = await Post.findById(id);
     
