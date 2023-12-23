@@ -221,7 +221,7 @@ p, .postImg{
 }
 @media (max-width: 500px) {
     .postImg{
-        margin-left: 40px;
+        margin-left: 70px;
     }
     .postImg-ind{
         margin-left: 4rem;
@@ -241,7 +241,7 @@ p, .postImg{
         width: 100px;
     }
     .postImg{
-        margin-left: 30px;
+        margin-left: 80px;
     }
     .postImg-ind{
         margin-left: 4rem !important;
@@ -259,7 +259,7 @@ p, .postImg{
         width: 100px;
     }
     .postImg{
-        margin-left: 14px;
+        margin-left: 60px;
     }
     .postImg-ind{
         width: 375px !important;
@@ -281,8 +281,3 @@ p, .postImg{
         height: 250px !important;
     }
 }
-/* @media (max-width: 445px) {
-    .search{
-        width: 150px;
-    }
-} */
